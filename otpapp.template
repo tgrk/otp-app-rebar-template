@@ -1,0 +1,16 @@
+{variables, [
+    {full, "myapp"},
+    {short, "ma"},
+    {author, "Foo Bar <foo@bar.com"}
+]}.
+{template, "otpapp.app.src", "src/{{full}}.app.src"}.
+{template, "otpapp_app.erl", "src/{{short}}_app.erl"}.
+{template, "otpapp_sup.erl", "src/{{short}}_sup.erl"}.
+{template, "otpapp.hrl", "include/{{short}}.hrl"}.
+{template, "otpapp.erl", "src/{{short}}.erl"}.
+{template, "otpapp_server.erl", "src/{{short}}_server.erl"}.
+{template, "otpapp_rebar.config", "rebar.config"}.
+{template, "otpapp_Makefile", "Makefile"}.
+{template, "otpapp_README.md", "README.md"}.
+{template, "otpapp_server_tests.erl", "test/{{short}}_server_tests.erl"}.
+{template, "otpapp_start.sh", "start.sh"}.

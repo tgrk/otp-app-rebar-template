@@ -1,0 +1,13 @@
+{application, {{full}}, [
+    {description, "{{description}}"},
+    {vsn, "1.0.0"},
+    {modules, []},
+    {registered, []},
+    {applications, [
+                     kernel,
+                     stdlib,
+                     lager
+    ]},
+    {mod, { {{short}}_app, []} },
+    {env, []}
+]}.

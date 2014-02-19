@@ -22,11 +22,25 @@
 %%% Application API
 %%%===========================================================================
 start() ->
-    application:start(?APP).
+    [ensure_started(D) || D <- deps() ++ [?APP]],
+    ok.
 
 stop() ->
-    application:stop(?APP).
+    [application:stop(D) || D <- deps()],
+    ok.
 
 %%%============================================================================
-%%% Internal functions
+%%% Internal functionality
 %%%============================================================================
+deps() ->
+    [lager].
+
+ensure_started(App) ->
+    case application:start(App) of
+        ok ->
+            ok;
+        {error, {already_started, App}} ->
+            ok;
+        {error, _} = Error ->
+            Error
+    end.

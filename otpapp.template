@@ -13,4 +13,6 @@
 {template, "otpapp_Makefile", "Makefile"}.
 {template, "otpapp_README.md", "README.md"}.
 {template, "otpapp_server_tests.erl", "test/{{short}}_server_tests.erl"}.
-{template, "otpapp_start.sh", "start.sh"}.
+{template, "otpapp_start.sh", "bin/start.sh"}.
+{template, "otpapp_start_local.sh", "bin/start_local.sh"}.
+{template, "otpapp_console.sh", "bin/console.sh"}.

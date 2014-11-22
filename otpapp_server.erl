@@ -13,14 +13,13 @@
 -export([start_link/0]).
 
 %% gen_server callbacks
--export([
-    init/1,
-    terminate/2,
-    handle_call/3,
-    handle_cast/2,
-    handle_info/2,
-    code_change/3
-]).
+-export([init/1,
+         terminate/2,
+         handle_call/3,
+         handle_cast/2,
+         handle_info/2,
+         code_change/3
+        ]).
 
 -define(SERV_NAME, ?MODULE).
 
@@ -29,6 +28,7 @@
 %%%============================================================================
 %%% API
 %%%============================================================================
+-spec start_link() -> ignore | {error, term()} | {ok, pid()}.
 start_link() ->
     gen_server:start_link({local, ?SERV_NAME}, ?MODULE, [], []).
 

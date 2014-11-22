@@ -6,10 +6,7 @@
 -module({{short}}).
 
 %% Application API
--export([
-    start/0,
-    stop/0
-]).
+-export([start/0, stop/0]).
 
 -include("{{short}}.hrl").
 
@@ -21,10 +18,12 @@
 %%%===========================================================================
 %%% Application API
 %%%===========================================================================
+-spec start() -> ok | no_return().
 start() ->
     [ensure_started(D) || D <- deps() ++ [?APP]],
     ok.
 
+-spec stop() -> ok | no_return().
 stop() ->
     [application:stop(D) || D <- deps()],
     ok.
@@ -36,11 +35,11 @@ deps() ->
     [lager].
 
 ensure_started(App) ->
-    case application:start(App) of
-        ok ->
+    case application:ensure_all_started(App) of
+        {ok, _Deps} ->
             ok;
         {error, {already_started, App}} ->
             ok;
         {error, _} = Error ->
-            Error
+            throw({error, {unable_to_start, App, Error}})
     end.

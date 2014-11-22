@@ -6,7 +6,7 @@ Features:
 * operations scripts
 * typespec for generated code
 * rebar configuration
-* `lagger` logging
+* `lagger` logging with default file handlers
 * `eunit_formatters` for coloring eunit output
 * xref checks
 * dialyzer `warn_missing_spec` and `debug_info`

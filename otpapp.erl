@@ -20,6 +20,17 @@
 %%%===========================================================================
 -spec start() -> ok | no_return().
 start() ->
+    %% start logging
+    application:load(lager),
+    application:set_env(lager, handlers,
+                        [{lager_console_backend, debug},
+                         {lager_file_backend,
+                          [{file, "log/error.log"},{level, error}]},
+                         {lager_file_backend,
+                          [{file, "log/console.log"}, {level, info}]}]),
+    application:set_env(lager, error_logger_redirect, true),
+    ok = lager:start(),
+
     [ensure_started(D) || D <- deps() ++ [?APP]],
     ok.
 
@@ -32,7 +43,7 @@ stop() ->
 %%% Internal functionality
 %%%============================================================================
 deps() ->
-    [lager].
+    [].
 
 ensure_started(App) ->
     case application:ensure_all_started(App) of
